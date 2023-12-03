@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap");
+
+:root {
+  --BG-BODY: hsl(0, 0%, 8%);
+  --BG-CONTACT: hsl(0, 0%, 14%);
+  --ACCENT: hsl(153, 71%, 59%);
+  --TEXT1: hsl(0, 0%, 100%);
+  --TEXT2: hsl(0, 0%, 85%);
+  --INVALID: hsl(7, 100%, 68%);
+  --FS-18: 1.125rem;
+  --FS-88: 5.5rem;
+  --FS-72: 4.5rem;
+  --FS-40: 2.5rem;
+  --FS-48: 3rem;
+  --FS-32: 2rem;
+  --FS-24: 1.5rem;
+  --CONTAINER: 69.375rem; /* 1110px */
+  --TRANSITION: 250ms ease-in-out;
+}
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  background-color: var(--BG-BODY);
+  color: var(--TEXT1);
+  font-size: var(--FS-18);
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0;
+  line-height: 1.56;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1,
+h2,
+h3 {
+  line-height: 1;
+}
+h1 {
+  font-size: 2.5rem;
+  font-size: clamp(2.5rem, 0.7rem + 7.68vw, 5.5rem);
+  font-size: -0.028em;
+  line-height: 1.1;
+}
+
+p {
+  color: var(--TEXT2);
+  font-size: 1rem;
+  font-size: clamp(1rem, 0.79rem + 0.88vw, 1.125rem);
+  line-height: 1.5;
+}
+.wrapper {
+  width: calc(100% - 2rem);
+  max-width: var(--CONTAINER);
+  margin-inline: auto;
+}
+a {
+  transition: color var(--TRANSITION);
+}
+a.underline {
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--TEXT1);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.625;
+  letter-spacing: 0.143em; /* font size divided by letter spacing to convert it into em 1/2.29px */
+  padding-bottom: 0.625rem;
+  background-image: linear-gradient(
+    to right,
+    var(--ACCENT) 75%,
+    var(--ACCENT) 75%
+  );
+  background-repeat: repeat-x;
+  background-position: 0 2.1em;
+  background-size: 8px 2px;
+}
+a:hover {
+  color: var(--ACCENT);
+}
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* 600 px */
+
+@media (min-width: 37.5em) {
+  .wrapper {
+    width: calc(100% - 3.75rem);
+  }
+}
+
+/* HEADER */
+
+.header {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+}
+.header_nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  gap: 20px 25px;
+}
+.header_home {
+  font-size: 1.5rem;
+  /*  1.02rem is an absolute (fixed) value in rems (root em units).
+  2.03vw is a relative value that depends on the viewport width (vw), and it scales with the width of the viewport. For every 1% change in viewport width, the font size will change by 2.03% of 1rem. */
+  font-size: clamp(1.5rem, 1.02rem + 2.03vw, 2rem);
+  color: var(--TEXT1);
+  text-decoration: none;
+  flex: 0 1 100%;
+}
+.header_social svg {
+  display: block;
+}
+.header_social > svg > path {
+  transition: fill var(--TRANSITION);
+}
+.header_social:hover > svg > path {
+  fill: var(--ACCENT);
+}
+@media (min-width: 37.5em) {
+  .header {
+    margin-top: 30px;
+    /*  margin-bottom: 90px; */
+  }
+  .header_nav {
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    gap: 32px;
+  }
+  .header_home {
+    /* flex: 1; is a shorthand for the following: flex-grow: 1; flex-shrink: 1; flex-basis: 0%; */
+    flex: 0 1 auto;
+    margin-inline-end: auto;
+  }
+}
+@media (min-width: 62.5em) {
+  .header {
+    margin-top: 40px;
+    margin-bottom: 127px;
+  }
+  .header_nav {
+    padding-right: 30px;
+  }
+}
+/* HERO */
+
+.hero {
+}
+.hero_wrapper {
+  border-bottom: 1px solid var(--TEXT2);
+  padding-bottom: 80px;
+}
+.hero_img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50%;
+  display: block;
+  width: 174px; /* 10.875rem */
+  height: auto;
+}
+.hero_rings {
+  position: absolute;
+  top: 130px; /* 8.125rem */
+  right: 50%;
+  z-index: -1;
+  height: auto;
+  /* width: 33.125rem; */ /* 530px */
+}
+.hero_circle {
+  position: absolute;
+  top: 254px; /* 15.875rem */
+  right: 0;
+  translate: 50%;
+  /*  width: 8.0625rem; */ /* 129px */
+  /*  height: 8.0625rem; */
+}
+.hero_text {
+  text-align: center;
+  position: relative;
+  /* Subtract the combined margin and padding of the header, which totals 101 pixels, from the height of the image, which is 383 pixels, when the screen size is 375 pixels in width and 812 pixels in height. Also add 40px in this which is the space between image and h1 text in figma design */
+  margin-top: 322px; /* 20.125rem */
+}
+.hero_headline {
+  margin-bottom: 24px;
+}
+.hero_headline > span {
+  background-image: linear-gradient(
+    to right,
+    var(--ACCENT) 75%,
+    var(--ACCENT) 75%
+  );
+  background-repeat: repeat-x;
+  background-position: 0 1.18em;
+  background-size: 8px 4px;
+}
+.hero_headline > br {
+  display: none;
+}
+.hero_description {
+  margin-bottom: 24px;
+}
+@media (min-width: 37.5em) {
+  .hero {
+    /*  margin-top: -80px; */
+  }
+  .hero_content {
+    display: flex;
+    /*  overflow-x: hidden; */
+    align-items: flex-end;
+  }
+  .hero_content picture {
+    order: 2;
+  }
+  .hero_text {
+    /*  Divide tablet width 768px with container size on figma design 445px, 445/768 = 0.58, Then we little bit increase to match with figma tempelate design */
+    /*  width: 62vw; */
+    margin-top: 0;
+    margin-right: -30px;
+    text-align: left;
+    z-index: 1;
+    flex: 1 0 60vw;
+  }
+  .hero_description {
+    /* width: 70%; */
+    margin-bottom: 34px;
+  }
+  .hero_img {
+    position: relative;
+    top: -80px;
+    translate: 0;
+    right: 0;
+    left: auto;
+    height: auto;
+    width: 42vw;
+    max-width: 445px;
+  }
+  .hero_rings {
+    top: 171px;
+  }
+  .hero_circle {
+    top: 468px;
+    z-index: 1;
+  }
+  .hero_headline > br {
+    display: inline-block;
+  }
+  .hero_headline {
+    margin-bottom: 60px;
+  }
+  .hero_description {
+    margin-bottom: 34px;
+  }
+  .hero_wrapper {
+    padding-bottom: 60px;
+  }
+}
+@media (min-width: 62.5em) {
+  .hero_wrapper {
+    position: relative;
+  }
+  .hero_img {
+    width: 445px;
+    translate: 0 -216px; /* zero for x-axis and -206px for Y   */
+  }
+  .hero_headline {
+    margin-bottom: 43px;
+  }
+  .hero_headline > br {
+    display: none;
+  }
+  .hero_description {
+    margin-bottom: 66px;
+    width: 38ch;
+  }
+  .hero_circle {
+    right: 445px;
+    top: 322px;
+  }
+}
